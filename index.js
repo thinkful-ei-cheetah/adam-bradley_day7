@@ -3,8 +3,8 @@
 function getDogImage(num) {
   fetch(`https://dog.ceo/api/breeds/image/random/${num}`)
     .then(response => response.json())
-    .then(responseJson => console.log(responseJson))
-    .then(showImageJson => displayResults(showImageJson));
+    // .then(responseJson => console.log(responseJson))
+    .then(responseJson => displayResults(responseJson));
 }
 
 function inputValue(){
@@ -23,9 +23,10 @@ function inputValue(){
 function displayResults(responseJson) {
   console.log(responseJson);
   //replace the existing image with the new one
-  $('.results-img').replaceWith(
-    `<img src="${responseJson.message}" class="results-img">`
-  )
+  let elements = responseJson.message.map(
+    x => `<img src="${x}" class="results-img">`
+  );
+  $('.results-img').replaceWith(elements);
   //display the results section
   $('.results').removeClass('hidden');
 }
