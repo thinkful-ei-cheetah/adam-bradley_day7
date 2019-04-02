@@ -2,6 +2,7 @@
 
 function getDogImage(breed) {
   fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+//   fetch(`https://dog.ceo/api/breeds/image/random/${breed}`)
 //   "https://dog.ceo/api/breed/hound/images"
     .then(response => response.json())
     // .then(responseJson => console.log(responseJson))
@@ -32,6 +33,7 @@ function inputBreed (){
 function displayResults(responseJson) {
   console.log(responseJson);
   //replace the existing image with the new one
+
 //   let elements = responseJson.message.map(
 //     x => `<img src="${x}" class="results-img">`
 //   );
@@ -41,10 +43,11 @@ $('.results-img').replaceWith(
     `<img src="${responseJson.message}" class="results-img">`);
   //display the results section
   $('.results').removeClass('hidden');
+
 }
 
 $(function() {
   console.log('App loaded! Waiting for submit!');
-  //inputValue();
+//   inputValue();
   inputBreed();
 });
